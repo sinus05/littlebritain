@@ -115,7 +115,7 @@
   .why-card p{color:var(--ink-soft);font-size:.95rem}
 
   .day{background:var(--cream-2)}
-  .day-grid{grid-template-columns:repeat(6,1fr);gap:14px}
+  .day-grid{grid-template-columns:repeat(4,1fr);gap:14px}
   .day-card{background:#fff;border-radius:18px;padding:18px 12px;text-align:center;box-shadow:var(--shadow-sm)}
   .day-ic{width:48px;height:48px;border-radius:14px;margin:0 auto 10px;display:grid;place-items:center;background:var(--red-soft)}
   .day-card:nth-child(even) .day-ic{background:var(--sun-soft)}
@@ -201,6 +201,8 @@
   .stagger.in>*:nth-child(4){animation-delay:.18s}
   .stagger.in>*:nth-child(5){animation-delay:.24s}
   .stagger.in>*:nth-child(6){animation-delay:.30s}
+  .stagger.in>*:nth-child(7){animation-delay:.36s}
+  .stagger.in>*:nth-child(8){animation-delay:.42s}
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
   @media (prefers-reduced-motion:reduce){
@@ -316,9 +318,11 @@
     <div class="day-grid reveal stagger">
       <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><div class="day-time">8:00</div><div class="day-label">Arrival &amp; free play</div></div>
       <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 19a6 6 0 0 1 12 0M15 19a5 5 0 0 1 6-4"/></svg></div><div class="day-time">9:50</div><div class="day-label">Circle time</div></div>
-      <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 0 2 2h12"/></svg></div><div class="day-time">10:20</div><div class="day-label">Lessons &amp; activities</div></div>
+      <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 0 2 2h12"/></svg></div><div class="day-time">10:20</div><div class="day-label">Morning lessons</div></div>
       <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 0 16 0zM2 13h20M8 5c0 1-1 1-1 2M12 4c0 1-1 1-1 2M16 5c0 1-1 1-1 2"/></svg></div><div class="day-time">12:30</div><div class="day-label">Lunch together</div></div>
       <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></div><div class="day-time">13:00</div><div class="day-label">Rest &amp; quiet time</div></div>
+      <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.3 4.6 5.1.7-3.7 3.6.9 5.1L12 14.8 7.4 17l.9-5.1L4.6 8.3l5.1-.7z"/></svg></div><div class="day-time">15:00</div><div class="day-label">Afternoon fun</div></div>
+      <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM16 9h2a2 2 0 0 1 0 4h-2M6 4c0 .8-.6 1-.6 2M10 4c0 .8-.6 1-.6 2"/></svg></div><div class="day-time">16:20</div><div class="day-label">Snack &amp; dinner</div></div>
       <div class="day-card"><div class="day-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div><div class="day-time">18:00</div><div class="day-label">Home time</div></div>
     </div>
   </div>
