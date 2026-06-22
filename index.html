@@ -152,6 +152,14 @@
   .price-list svg{width:20px;height:20px;color:var(--sky);flex-shrink:0}
   .price-card .btn{width:100%}
 
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .faq-item{background:#fff;border-radius:18px;padding:4px 26px;box-shadow:var(--shadow-sm)}
+  .faq-item summary{list-style:none;cursor:pointer;padding:20px 0;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.08rem;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:1.6rem;color:var(--red);flex-shrink:0;transition:transform .2s var(--ease-out)}
+  .faq-item[open] summary::after{transform:rotate(45deg)}
+  .faq-item p{color:var(--ink-soft);padding:0 0 22px;font-size:1rem;line-height:1.6}
+
   /* enquiry form */
   .enquiry{background:#fff}
   .enq-wrap{max-width:640px;margin:0 auto;background:var(--cream);border:1px solid var(--line);border-radius:28px;padding:36px;box-shadow:var(--shadow-sm)}
@@ -272,6 +280,44 @@
   "sameAs": [
     "https://www.instagram.com/littlebritain.uzb",
     "https://t.me/+998990494037"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What ages does Little Britain Daycare accept?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We welcome children aged 2 to 6 years old, in both our half-day and full-day programmes." }
+    },
+    {
+      "@type": "Question",
+      "name": "What language do you teach in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Little Britain is an English-medium daycare. Children learn and play with native English-speaking teachers all day long, following a British English approach." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does daycare cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Half day (8:00 AM – 1:00 PM) is $270/month and full day (8:00 AM – 6:00 PM) is $550/month. Both plans include meals and all daily activities." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are meals included?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Breakfast, snacks, lunch, and (for full-day children) dinner are freshly cooked on site every day." }
+    },
+    {
+      "@type": "Question",
+      "name": "What teaching approach do you use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We follow a Montessori, play-based approach that lets each child learn at their own pace through hands-on activities, art, movement, and stories." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you located and how do I book a visit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We're at Shota Rustaveli 13A, Tashkent. Call or message us on Telegram, or fill in the enquiry form on the website and we'll call you back to arrange a tour." }
+    }
   ]
 }
 </script>
@@ -402,6 +448,38 @@
         </ul>
         <a href="#enquiry" class="btn btn-red">Choose full day</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kick">Got questions?</span><h2>Frequently asked questions</h2></div>
+    <div class="faq-list reveal stagger">
+      <details class="faq-item">
+        <summary>What ages does Little Britain Daycare accept?</summary>
+        <p>We welcome children aged 2 to 6 years old, in both our half-day and full-day programmes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What language do you teach in?</summary>
+        <p>Little Britain is an English-medium daycare. Children learn and play with native English-speaking teachers all day long, following a British English approach.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much does daycare cost?</summary>
+        <p>Half day (8:00 AM – 1:00 PM) is $270/month and full day (8:00 AM – 6:00 PM) is $550/month. Both plans include meals and all daily activities.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are meals included?</summary>
+        <p>Yes. Breakfast, snacks, lunch, and (for full-day children) dinner are freshly cooked on site every day — no need to pack food.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What teaching approach do you use?</summary>
+        <p>We follow a Montessori, play-based approach that lets each child learn at their own pace through hands-on activities, art, movement, and stories.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where are you located and how do I book a visit?</summary>
+        <p>We're at Shota Rustaveli 13A, Tashkent. Call or message us on Telegram, or fill in the form below and we'll call you back to arrange a tour.</p>
+      </details>
     </div>
   </div>
 </section>
