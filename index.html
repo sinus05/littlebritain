@@ -198,6 +198,14 @@
   @media (hover:hover) and (pointer:fine){.gallery-grid figure:hover{transform:translateY(-6px);box-shadow:var(--shadow)}}
   .gallery-grid img{width:100%;height:230px;object-fit:cover;display:block}
   .gallery-grid figcaption{padding:16px 20px;font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink)}
+  .gallery-btn{display:block;width:100%;border:0;padding:0;background:none;cursor:pointer}
+
+  .lightbox{position:fixed;inset:0;background:rgba(20,14,12,.88);display:flex;align-items:center;justify-content:center;padding:24px;z-index:200;opacity:0;visibility:hidden;transition:opacity .2s ease;}
+  .lightbox.open{opacity:1;visibility:visible}
+  .lightbox img{max-width:min(900px,92vw);max-height:88vh;border-radius:16px;box-shadow:var(--shadow-lg);display:block}
+  .lightbox-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);border:none;color:#fff;cursor:pointer;display:grid;place-items:center}
+  .lightbox-close svg{width:22px;height:22px}
+  @media (hover:hover) and (pointer:fine){.lightbox-close:hover{background:rgba(255,255,255,.26)}}
 
   footer{background:var(--red-deep);color:rgba(255,255,255,.82);padding:46px 0 30px}
   .foot-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.14)}
@@ -533,8 +541,8 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="kick">A peek inside</span><h2>Come and see us in action</h2></div>
     <div class="gallery-grid reveal stagger">
-      <figure><img src="reading-corner.jpg" alt="Reading corner with children's books and bean bags at Little Britain Daycare" width="1200" height="901" loading="lazy"><figcaption>Reading corner</figcaption></figure>
-      <figure><img src="play-lounge.jpg" alt="Cosy lounge with bean bag seating and TV for movie afternoons at Little Britain Daycare" width="1200" height="901" loading="lazy"><figcaption>Cinema &amp; play lounge</figcaption></figure>
+      <figure><button class="gallery-btn" onclick="openLightbox('reading-corner.jpg',this.querySelector('img').alt)" aria-label="Open larger photo: Reading corner"><img src="reading-corner.jpg" alt="Reading corner with children's books and bean bags at Little Britain Daycare" width="1200" height="901" loading="lazy"></button><figcaption>Reading corner</figcaption></figure>
+      <figure><button class="gallery-btn" onclick="openLightbox('play-lounge.jpg',this.querySelector('img').alt)" aria-label="Open larger photo: Cinema &amp; play lounge"><img src="play-lounge.jpg" alt="Cosy lounge with bean bag seating and TV for movie afternoons at Little Britain Daycare" width="1200" height="901" loading="lazy"></button><figcaption>Cinema &amp; play lounge</figcaption></figure>
     </div>
   </div>
 </section>
@@ -577,6 +585,13 @@
   <span class="fab-label">Message us</span>
 </a>
 
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
   // sticky nav shadow
   var nav=document.getElementById('nav');
@@ -587,6 +602,20 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
   }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+
+  // gallery lightbox
+  var lightbox=document.getElementById('lightbox');
+  var lightboxImg=document.getElementById('lightbox-img');
+  function openLightbox(src,alt){
+    lightboxImg.src=src; lightboxImg.alt=alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  addEventListener('keydown',function(ev){ if(ev.key==='Escape')closeLightbox(); });
 
   // enquiry form -> Web3Forms (AJAX, inline thank-you)
   var form=document.getElementById('enq-form');
