@@ -193,6 +193,12 @@
   .map-card{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid #fff;background:#fff}
   .map-card iframe{display:block;width:100%;height:340px;border:0}
 
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .gallery-grid figure{margin:0;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-sm);background:#fff;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+  @media (hover:hover) and (pointer:fine){.gallery-grid figure:hover{transform:translateY(-6px);box-shadow:var(--shadow)}}
+  .gallery-grid img{width:100%;height:230px;object-fit:cover;display:block}
+  .gallery-grid figcaption{padding:16px 20px;font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink)}
+
   footer{background:var(--red-deep);color:rgba(255,255,255,.82);padding:46px 0 30px}
   .foot-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.14)}
   .foot-logo{display:flex;align-items:center;gap:14px;color:#fff}
@@ -238,6 +244,7 @@
     .price-grid{grid-template-columns:1fr;max-width:420px}
     .price-card.feat{transform:none}
     .cta-inner{grid-template-columns:1fr;gap:30px}
+    .gallery-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
     .nav-phone{display:none}
     .nav-toggle{display:block}
     .nav-right .btn{display:none}
@@ -520,10 +527,23 @@
   </div>
 </section>
 
+<svg class="wave" viewBox="0 0 1440 54" preserveAspectRatio="none" style="background:#ffffff"><path d="M0,27 C360,62 1080,-8 1440,27 L1440,54 L0,54 Z" fill="#FFF9F2"/></svg>
+
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kick">A peek inside</span><h2>Come and see us in action</h2></div>
+    <div class="gallery-grid reveal stagger">
+      <figure><img src="reading-corner.jpg" alt="Reading corner with children's books and bean bags at Little Britain Daycare" width="1200" height="901" loading="lazy"><figcaption>Reading corner</figcaption></figure>
+      <figure><img src="play-lounge.jpg" alt="Cosy lounge with bean bag seating and TV for movie afternoons at Little Britain Daycare" width="1200" height="901" loading="lazy"><figcaption>Cinema &amp; play lounge</figcaption></figure>
+      <figure><img src="nap-room.jpg" alt="Nap room with child-sized beds at Little Britain Daycare" width="1200" height="904" loading="lazy"><figcaption>Rest &amp; nap room</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="sec cta" id="visit">
   <div class="wrap cta-inner">
     <div class="cta-left reveal">
-      <h2>Come and see us in action</h2>
+      <h2>Ready to visit?</h2>
       <p>The best way to feel the Little Britain difference is to visit. Pop in for a tour — we'd love to meet you and your little one.</p>
       <ul class="cta-list">
         <li><a href="tel:+998990494037"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Call us</small>+998 99 049 40 37</span></a></li>
