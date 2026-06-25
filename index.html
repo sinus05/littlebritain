@@ -216,9 +216,12 @@
   .foot-logo .logo-text span{color:rgba(255,255,255,.7)}
   .foot-hours{font-weight:700;color:#fff;text-align:right}
   .foot-hours small{display:block;font-weight:700;opacity:.7;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
-  .foot-sister{text-align:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.92rem;color:rgba(255,255,255,.85)}
-  .foot-sister a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:3px}
-  @media (hover:hover) and (pointer:fine){.foot-sister a:hover{text-decoration-color:#fff}}
+  .foot-sister{display:flex;flex-direction:column;align-items:center;gap:12px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+  .foot-sister-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,.75)}
+  .sister-badge{display:inline-flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:8px 20px 8px 8px;box-shadow:var(--shadow-sm);transition:transform .2s var(--ease-out),box-shadow .2s var(--ease-out)}
+  .sister-badge img{height:40px;width:auto;display:block;border-radius:8px}
+  .sister-badge span{color:var(--ink);font-weight:700;font-size:.98rem}
+  @media (hover:hover) and (pointer:fine){.sister-badge:hover{transform:translateY(-3px);box-shadow:var(--shadow)}}
   .foot-bottom{padding-top:22px;font-size:.86rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
   /* floating WhatsApp */
@@ -576,7 +579,13 @@
       </div>
       <div class="foot-hours">Mon – Fri · 8:00 AM – 6:00 PM<small>Open hours</small></div>
     </div>
-    <div class="foot-sister">Also part of our family — visit <a href="https://worldlinklb.vercel.app/" target="_blank" rel="noopener">WorldLink Academy ↗</a>, English courses for adults at the same facility.</div>
+    <div class="foot-sister">
+      <span class="foot-sister-label">Also part of our family</span>
+      <a class="sister-badge" href="https://worldlinklb.vercel.app/" target="_blank" rel="noopener">
+        <img src="worldlink-logo.png" alt="WorldLink Academy" width="300" height="232">
+        <span>WorldLink Academy</span>
+      </a>
+    </div>
     <div class="foot-bottom">
       <span>© 2026 Little Britain Daycare · Shota Rustaveli 13A, Tashkent</span>
       <span>+998 99 049 40 37 · @littlebritain.uzb</span>
