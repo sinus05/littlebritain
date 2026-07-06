@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 
@@ -12,11 +12,28 @@ type Photo = (typeof galleryPhotos)[number];
 
 export function GalleryGrid({ photos }: { photos: readonly Photo[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const close = () => {
+    setOpenIndex((current) => {
+      if (current !== null) triggerRefs.current[current]?.focus();
+      return null;
+    });
+  };
 
   useEffect(() => {
     if (openIndex === null) return;
+    closeButtonRef.current?.focus();
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenIndex(null);
+      if (e.key === "Escape") {
+        close();
+      } else if (e.key === "Tab") {
+        // only the close button is focusable inside the dialog, so trap focus on it
+        e.preventDefault();
+        closeButtonRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -37,6 +54,9 @@ export function GalleryGrid({ photos }: { photos: readonly Photo[] }) {
             className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform hover:-translate-y-1.5"
           >
             <button
+              ref={(el) => {
+                triggerRefs.current[i] = el;
+              }}
               type="button"
               onClick={() => setOpenIndex(i)}
               aria-label={`Open larger photo: ${photo.caption}`}
@@ -47,6 +67,7 @@ export function GalleryGrid({ photos }: { photos: readonly Photo[] }) {
                 alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
+                sizes="(max-width: 640px) 100vw, 600px"
                 className="h-[230px] w-full object-cover"
               />
               <span className="block p-4 font-heading font-bold text-ink">
@@ -60,15 +81,19 @@ export function GalleryGrid({ photos }: { photos: readonly Photo[] }) {
       <AnimatePresence>
         {active && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={active.caption}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpenIndex(null)}
+            onClick={close}
             className="fixed inset-0 z-[200] flex items-center justify-center bg-[#140e0c]/88 p-6"
           >
             <button
+              ref={closeButtonRef}
               type="button"
-              onClick={() => setOpenIndex(null)}
+              onClick={close}
               aria-label="Close photo"
               className="absolute top-4.5 right-5.5 flex size-11 items-center justify-center rounded-full bg-white/15 text-white"
             >

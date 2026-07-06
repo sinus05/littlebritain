@@ -1,19 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
-import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Reveal, RevealItem } from "@/components/reveal";
+import { Reveal } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
-import { site, whyUs } from "@/lib/site-config";
+import { WhyUsGrid } from "@/components/why-us-grid";
+import { CtaBanner } from "@/components/cta-banner";
+import { site } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About Us",
   description:
     "Learn about Little Britain Daycare's Montessori, English-medium approach to early childhood care in Tashkent, and the team behind it.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -83,6 +82,7 @@ export default function AboutPage() {
                   alt="Reading corner with children's books and bean bags at Little Britain Daycare"
                   width={700}
                   height={525}
+                  sizes="(max-width: 1024px) 100vw, 560px"
                   className="h-auto w-full object-cover"
                 />
               </div>
@@ -97,46 +97,14 @@ export default function AboutPage() {
             kicker="Why families choose us"
             title="Care you can feel good about"
           />
-          <Reveal stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {whyUs.map((item) => (
-              <RevealItem
-                key={item.title}
-                className="rounded-3xl bg-white p-6 text-center shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)]"
-              >
-                <div className="mx-auto mb-4.5 flex size-[74px] rotate-[-5deg] items-center justify-center rounded-[22px] bg-red text-white">
-                  <CheckCircle2 className="size-9" />
-                </div>
-                <h3 className="mb-2 text-[1.2rem] text-ink">{item.title}</h3>
-                <p className="text-[0.95rem] text-ink-soft">
-                  {item.description}
-                </p>
-              </RevealItem>
-            ))}
-          </Reveal>
+          <WhyUsGrid variant="card" />
         </Container>
       </section>
 
-      <section className="bg-red py-16 text-center text-white">
-        <Container>
-          <Reveal>
-            <h2 className="mb-4 text-[clamp(1.9rem,3.6vw,2.6rem)]">
-              Come meet our team
-            </h2>
-            <p className="mx-auto mb-7 max-w-xl opacity-90">
-              The best way to understand our approach is to see it in
-              action. Book a visit and spend time with our teachers and
-              children.
-            </p>
-            <Button
-              render={<Link href="/contact" />}
-              nativeButton={false}
-              className="h-auto rounded-full bg-white px-7 py-3.5 font-heading text-base font-semibold text-red hover:bg-cream"
-            >
-              Book a visit
-            </Button>
-          </Reveal>
-        </Container>
-      </section>
+      <CtaBanner
+        title="Come meet our team"
+        description="The best way to understand our approach is to see it in action. Book a visit and spend time with our teachers and children."
+      />
     </>
   );
 }

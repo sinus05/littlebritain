@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import {
   Accordion,
   AccordionContent,
@@ -9,13 +7,14 @@ import {
 import { Reveal, RevealItem } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
 import { faqs } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
     "Answers to common questions about Little Britain Daycare: ages, pricing, meals, teaching approach, and how to book a visit.",
-  alternates: { canonical: "/faq" },
-};
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (

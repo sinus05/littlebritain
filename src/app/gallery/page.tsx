@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
-
 import { GalleryGrid } from "@/components/gallery-grid";
 import { Reveal } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
 import { galleryPhotos } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Gallery",
   description:
     "Take a peek inside Little Britain Daycare — our reading corner, play lounge, and facilities in Tashkent.",
-  alternates: { canonical: "/gallery" },
-};
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

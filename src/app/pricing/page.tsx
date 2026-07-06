@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -7,13 +6,14 @@ import { Reveal } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
 import { pricingPlans } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Pricing & Plans",
   description:
     "Simple, transparent daycare pricing in Tashkent. Half day $270/month, full day $550/month — meals and daily activities included.",
-  alternates: { canonical: "/pricing" },
-};
+  path: "/pricing",
+});
 
 export default function PricingPage() {
   return (

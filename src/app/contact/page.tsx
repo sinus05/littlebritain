@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
 import { MapPin, Phone } from "lucide-react";
 
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Reveal } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
 import { site } from "@/lib/site-config";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact & Book a Visit",
   description:
     "Book a visit to Little Britain Daycare in Tashkent. Call, message us on Telegram, or fill in the enquiry form and we'll call you back.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 function InstagramIcon({ className }: { className?: string }) {
   return (

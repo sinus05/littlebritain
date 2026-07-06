@@ -19,6 +19,8 @@
   --color-sun-soft: var(--sun-soft);
   --color-sky: var(--sky);
   --color-sky-soft: var(--sky-soft);
+  --color-sun-deep: var(--sun-deep);
+  --color-sky-deep: var(--sky-deep);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);
@@ -68,8 +70,10 @@
   --red-soft: #fcedea;
   --sun: #f5b53d;
   --sun-soft: #fdf0d2;
+  --sun-deep: #9a6a09;
   --sky: #5fb89a;
   --sky-soft: #e3f3ec;
+  --sky-deep: #2f6b54;
   --ink: #3d2b26;
   --ink-soft: #7c6a63;
   --line: #efe3d6;

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Baloo_2, Nunito } from "next/font/google";
+import { MotionConfig } from "motion/react";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -111,10 +112,12 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden bg-cream font-sans text-ink">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-        <TelegramFab />
+        <MotionConfig reducedMotion="user">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+          <TelegramFab />
+        </MotionConfig>
       </body>
     </html>
   );

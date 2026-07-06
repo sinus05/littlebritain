@@ -22,19 +22,19 @@ export function SiteFooter() {
               <span className="block font-heading text-lg font-bold text-white">
                 Little Britain
               </span>
-              <span className="text-white/70">{site.tagline}</span>
+              <span className="text-white/80">{site.tagline}</span>
             </div>
           </div>
           <div className="text-right font-bold text-white">
             {site.hours}
-            <small className="block text-[0.74rem] font-bold tracking-[0.12em] text-white/70 uppercase">
+            <small className="block text-[0.74rem] font-bold tracking-[0.12em] text-white/80 uppercase">
               Open hours
             </small>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-3 border-b border-white/15 py-6">
-          <span className="text-[0.78rem] font-extrabold tracking-[0.1em] text-white/75 uppercase">
+          <span className="text-[0.78rem] font-extrabold tracking-[0.1em] text-white/80 uppercase">
             Also part of our family
           </span>
           <a
