@@ -34,7 +34,11 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex flex-col leading-none">
+        <Link
+          href="/"
+          aria-label="Little Britain Daycare — Home"
+          className="flex flex-col leading-none"
+        >
           <span className="font-heading text-lg font-bold text-ink">
             Little Britain
           </span>

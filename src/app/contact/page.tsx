@@ -3,7 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Reveal } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
-import { site } from "@/lib/site-config";
+import { pricingPlans, site } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -54,18 +54,27 @@ const contactLinks = [
   },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ program?: string }>;
+}) {
+  const { program } = await searchParams;
+  const selectedPlan = pricingPlans.find((plan) => plan.slug === program);
+
   return (
-    <section className="py-16">
+    <section className="py-12">
       <Container>
         <SectionHeading
+          as="h1"
+          className="mb-8"
           kicker="Book a visit"
           title="Let's find the perfect spot for your child"
-          description="Leave your details and we'll call you back to arrange a tour — usually the same day."
+          description="Book a free tour — we'll usually call you back the same day."
         />
 
         <Reveal className="mx-auto mb-14 max-w-xl rounded-[28px] border border-line bg-white p-9 shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)]">
-          <EnquiryForm />
+          <EnquiryForm initialProgram={selectedPlan?.name} />
         </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-2">
@@ -77,7 +86,7 @@ export default function ContactPage() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-3.5 rounded-2xl bg-white p-4 shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-colors hover:bg-cream-2"
+                    className="flex items-center gap-3.5 rounded-2xl bg-white p-4 shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-colors duration-200 ease-out hover:bg-cream-2"
                   >
                     <span className="flex size-11.5 shrink-0 items-center justify-center rounded-2xl bg-red-soft text-red">
                       <link.icon className="size-5.5" />

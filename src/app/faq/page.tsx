@@ -20,7 +20,11 @@ export default function FaqPage() {
   return (
     <section className="py-16">
       <Container className="max-w-3xl">
-        <SectionHeading kicker="Got questions?" title="Frequently asked questions" />
+        <SectionHeading
+          as="h1"
+          kicker="Got questions?"
+          title="Frequently asked questions"
+        />
         <Reveal stagger className="flex flex-col gap-3.5">
           <Accordion multiple className="flex flex-col gap-3.5">
             {faqs.map((faq) => (

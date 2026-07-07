@@ -22,7 +22,7 @@ export function ActivitiesGrid() {
             key={activity.title}
             className={i === 1 ? "md:-translate-y-3.5" : undefined}
           >
-            <div className="h-full overflow-hidden rounded-3xl bg-cream shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform hover:-translate-y-2">
+            <div className="h-full overflow-hidden rounded-3xl bg-cream shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform duration-200 ease-out hover:-translate-y-2">
               <div
                 className={`relative flex h-[148px] items-center justify-center ${activityColor[activity.color]}`}
               >

@@ -27,14 +27,13 @@ export default function AboutPage() {
               A little home away from home
             </h1>
             <p className="mb-4 text-[1.1rem] text-ink-soft">
-              Little Britain Daycare was founded to give Tashkent families an
-              English-medium, play-based alternative to traditional
-              childcare — a place where children aged 2 to 6 can learn,
-              laugh, and grow surrounded by native English speakers every
-              single day.
+              Little Britain gives Tashkent families an English-medium,
+              play-based alternative to traditional childcare — where
+              children aged 2 to 6 learn, laugh, and grow with native
+              English speakers every day.
             </p>
             <p className="text-[1.1rem] text-ink-soft">
-              We&apos;re proud to be part of the same family as{" "}
+              We&apos;re part of the{" "}
               <a
                 href={site.sisterBrand.href}
                 target="_blank"
@@ -42,9 +41,9 @@ export default function AboutPage() {
                 className="font-bold text-red hover:underline"
               >
                 {site.sisterBrand.name}
-              </a>
-              , bringing years of English-language education experience into
-              a warm, nurturing daycare setting.
+              </a>{" "}
+              family, bringing years of English-language education experience
+              into a warm daycare setting.
             </p>
           </Reveal>
         </Container>
@@ -61,18 +60,14 @@ export default function AboutPage() {
                 Montessori play, native English, every day
               </h2>
               <p className="mb-4 text-ink-soft">
-                Children learn best through play. Our teachers follow a
-                Montessori-inspired, play-based approach that lets each child
-                explore at their own pace — through art, movement, stories,
-                and hands-on activities — while native English-speaking
-                teachers guide them all day long.
+                Children learn best through play. Our Montessori-inspired
+                approach lets each child explore at their own pace — through
+                art, movement, stories, and hands-on activities.
               </p>
               <p className="text-ink-soft">
-                It&apos;s not a classroom with a lesson plan bolted onto
-                daycare hours. English is simply the language of play,
-                friendship, and discovery here — so children absorb it
-                naturally, the same way they&apos;d pick up their mother
-                tongue.
+                English isn&apos;t a subject here — it&apos;s the language of
+                play and friendship, so children pick it up as naturally as
+                their first language.
               </p>
             </Reveal>
             <Reveal>

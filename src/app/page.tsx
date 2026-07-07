@@ -46,10 +46,9 @@ export default function HomePage() {
             Where <span className="text-red">playtime</span> meets education
           </h1>
 
-          <p className="mx-auto mb-6 max-w-[34em] text-[1.16rem] text-ink-soft">
-            A warm, nurturing daycare in the heart of Tashkent where little
-            ones learn English, make friends, and discover the world — one
-            happy day at a time.
+          <p className="mx-auto mb-6 max-w-[30em] text-[1.16rem] text-ink-soft">
+            A warm, English-medium daycare in Tashkent where your little one
+            learns, plays, and makes friends every day.
           </p>
 
           <div className="mb-6 flex flex-wrap justify-center gap-3.5">
@@ -135,7 +134,7 @@ export default function HomePage() {
       </section>
 
       {/* Pricing teaser */}
-      <section className="py-16">
+      <section className="py-14">
         <Container className="max-w-3xl text-center">
           <SectionHeading
             kicker="Simple plans for busy families"
@@ -153,7 +152,7 @@ export default function HomePage() {
       </section>
 
       {/* Gallery teaser */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-14">
         <Container>
           <SectionHeading kicker="A peek inside" title="Come and see us in action" />
           <Reveal
@@ -163,7 +162,7 @@ export default function HomePage() {
             {galleryPhotos.slice(0, 2).map((photo) => (
               <RevealItem
                 key={photo.src}
-                className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)]"
+                className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform duration-200 ease-out hover:-translate-y-1.5"
               >
                 <Link href="/gallery" className="block">
                   <Image
