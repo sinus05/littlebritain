@@ -15,10 +15,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { site } from "@/lib/site-config";
+import { pricingPlans, site } from "@/lib/site-config";
 import { submitEnquiry, type EnquiryState } from "@/app/contact/actions";
 
 const initialState: EnquiryState = { status: "idle" };
+
+const NOT_SURE_YET = "Not sure yet";
+const programOptions = [...pricingPlans.map((plan) => plan.name), NOT_SURE_YET];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -26,14 +29,18 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="h-auto w-full rounded-full bg-red py-3.5 font-heading text-base font-semibold text-white hover:bg-red-deep disabled:opacity-70"
+      className="h-auto w-full rounded-full bg-red py-3.5 font-heading text-base font-semibold text-white transition-colors duration-200 ease-out hover:bg-red-deep disabled:opacity-70"
     >
       {pending ? "Sending…" : "Request a visit"}
     </Button>
   );
 }
 
-export function EnquiryForm() {
+export function EnquiryForm({
+  initialProgram,
+}: {
+  initialProgram?: string;
+}) {
   const [state, formAction] = useActionState(submitEnquiry, initialState);
 
   if (state.status === "success") {
@@ -65,6 +72,28 @@ export function EnquiryForm() {
           </Label>
           <Input id="phone" name="phone" type="tel" placeholder="+998 ..." required />
         </div>
+      </div>
+
+      <div className="text-left">
+        <Label htmlFor="program" className="mb-1.5 block font-extrabold text-ink">
+          Program
+        </Label>
+        <Select
+          name="program"
+          required
+          defaultValue={initialProgram ?? NOT_SURE_YET}
+        >
+          <SelectTrigger id="program" className="w-full">
+            <SelectValue placeholder="Select a program" />
+          </SelectTrigger>
+          <SelectContent>
+            {programOptions.map((option) => (
+              <SelectItem key={option} value={option}>
+                {option}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="text-left">

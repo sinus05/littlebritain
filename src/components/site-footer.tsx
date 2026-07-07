@@ -41,7 +41,7 @@ export function SiteFooter() {
             href={site.sisterBrand.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3.5 rounded-2xl bg-white py-2 pr-5 pl-2 shadow-md transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3.5 rounded-2xl bg-white py-2 pr-5 pl-2 shadow-md transition-transform duration-200 ease-out hover:-translate-y-0.5"
           >
             <Image
               src="/worldlink-logo.png"

@@ -112,9 +112,17 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden bg-cream font-sans text-ink">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-red focus:px-5 focus:py-3 focus:font-heading focus:font-semibold focus:text-white focus:shadow-md"
+        >
+          Skip to content
+        </a>
         <MotionConfig reducedMotion="user">
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+            {children}
+          </main>
           <SiteFooter />
           <TelegramFab />
         </MotionConfig>

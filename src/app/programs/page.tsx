@@ -17,6 +17,7 @@ export default function ProgramsPage() {
       <section className="bg-white py-16">
         <Container>
           <SectionHeading
+            as="h1"
             kicker="A joyful day, every day"
             title="So much more than childcare"
             description="From paintbrushes to chessboards, every part of the day is designed to spark curiosity, build confidence, and grow young minds."

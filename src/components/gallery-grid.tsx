@@ -51,7 +51,7 @@ export function GalleryGrid({ photos }: { photos: readonly Photo[] }) {
         {photos.map((photo, i) => (
           <RevealItem
             key={photo.src}
-            className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform hover:-translate-y-1.5"
+            className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)] transition-transform duration-200 ease-out hover:-translate-y-1.5"
           >
             <button
               ref={(el) => {

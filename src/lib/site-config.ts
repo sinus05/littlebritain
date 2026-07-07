@@ -105,6 +105,7 @@ export const daySchedule = [
 export const pricingPlans = [
   {
     name: "Half day",
+    slug: "half-day",
     hours: "8:00 AM – 1:00 PM",
     price: 270,
     featured: false,
@@ -112,6 +113,7 @@ export const pricingPlans = [
   },
   {
     name: "Full day",
+    slug: "full-day",
     hours: "8:00 AM – 6:00 PM",
     price: 550,
     featured: true,

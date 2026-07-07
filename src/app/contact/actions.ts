@@ -23,6 +23,7 @@ export async function submitEnquiry(
     from_name: "Little Britain Website",
     name: formData.get("name"),
     phone: formData.get("phone"),
+    program: formData.get("program"),
     child_age: formData.get("child_age"),
     message: formData.get("message"),
   };

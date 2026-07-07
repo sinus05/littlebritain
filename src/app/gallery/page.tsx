@@ -16,6 +16,7 @@ export default function GalleryPage() {
     <section className="py-16">
       <Container>
         <SectionHeading
+          as="h1"
           kicker="A peek inside"
           title="Come and see us in action"
         />
