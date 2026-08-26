@@ -1,7 +1,10 @@
+import { useTranslations } from "next-intl";
+
 import { Reveal, RevealItem } from "@/components/reveal";
 import { daySchedule } from "@/lib/site-config";
 
 export function DayScheduleGrid({ limit }: { limit?: number }) {
+  const t = useTranslations("DaySchedule");
   const steps = limit ? daySchedule.slice(0, limit) : daySchedule;
 
   return (
@@ -15,7 +18,7 @@ export function DayScheduleGrid({ limit }: { limit?: number }) {
             {step.time}
           </div>
           <div className="mt-0.5 text-[0.84rem] font-bold text-ink-soft">
-            {step.label}
+            {t(step.time)}
           </div>
         </RevealItem>
       ))}

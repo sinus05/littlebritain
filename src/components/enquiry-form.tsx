@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useLocale, useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,22 +17,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { pricingPlans, site } from "@/lib/site-config";
-import { submitEnquiry, type EnquiryState } from "@/app/contact/actions";
+import { submitEnquiry, type EnquiryState } from "@/app/[locale]/contact/actions";
 
 const initialState: EnquiryState = { status: "idle" };
-
-const NOT_SURE_YET = "Not sure yet";
-const programOptions = [...pricingPlans.map((plan) => plan.name), NOT_SURE_YET];
+const CHILD_AGES = [2, 3, 4, 5, 6];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("EnquiryForm");
   return (
     <Button
       type="submit"
       disabled={pending}
       className="h-auto w-full rounded-full bg-red py-3.5 font-heading text-base font-semibold text-white transition-colors duration-200 ease-out hover:bg-red-deep disabled:opacity-70"
     >
-      {pending ? "Sending…" : "Request a visit"}
+      {pending ? t("sending") : t("requestVisit")}
     </Button>
   );
 }
@@ -41,50 +41,65 @@ export function EnquiryForm({
 }: {
   initialProgram?: string;
 }) {
+  const t = useTranslations("EnquiryForm");
+  const tPricing = useTranslations("Pricing");
+  const locale = useLocale();
   const [state, formAction] = useActionState(submitEnquiry, initialState);
+
+  const notSureYet = t("notSureYet");
+  const programOptions = [
+    ...pricingPlans.map((plan) => tPricing(`plans.${plan.key}.name`)),
+    notSureYet,
+  ];
+
+  const errorMessage =
+    state.status === "error"
+      ? state.message === "network"
+        ? t("errorNetwork")
+        : t("errorGeneric")
+      : undefined;
 
   if (state.status === "success") {
     return (
       <div className="py-4.5 text-center">
         <CheckCircle2 className="mx-auto mb-3 size-14 text-sky" />
-        <h3 className="mb-1.5 text-[1.4rem] text-ink">Thank you!</h3>
-        <p className="text-ink-soft">
-          We&apos;ve received your request and will call you back shortly.
-        </p>
+        <h3 className="mb-1.5 text-[1.4rem] text-ink">{t("thankYouTitle")}</h3>
+        <p className="text-ink-soft">{t("thankYouBody")}</p>
       </div>
     );
   }
 
   return (
     <form action={formAction} className="space-y-4">
+      <input type="hidden" name="locale" value={locale} />
       <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="absolute left-[-9999px] opacity-0" />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="text-left">
           <Label htmlFor="name" className="mb-1.5 block font-extrabold text-ink">
-            Your name
+            {t("yourName")}
           </Label>
-          <Input id="name" name="name" placeholder="Parent's name" required />
+          <Input id="name" name="name" placeholder={t("namePlaceholder")} required />
         </div>
         <div className="text-left">
           <Label htmlFor="phone" className="mb-1.5 block font-extrabold text-ink">
-            Phone number
+            {t("phoneNumber")}
           </Label>
-          <Input id="phone" name="phone" type="tel" placeholder="+998 ..." required />
+          <Input id="phone" name="phone" type="tel" placeholder={t("phonePlaceholder")} required />
         </div>
       </div>
 
       <div className="text-left">
         <Label htmlFor="program" className="mb-1.5 block font-extrabold text-ink">
-          Program
+          {t("program")}
         </Label>
         <Select
           name="program"
           required
-          defaultValue={initialProgram ?? NOT_SURE_YET}
+          defaultValue={initialProgram ?? notSureYet}
         >
           <SelectTrigger id="program" className="w-full">
-            <SelectValue placeholder="Select a program" />
+            <SelectValue placeholder={t("selectProgram")} />
           </SelectTrigger>
           <SelectContent>
             {programOptions.map((option) => (
@@ -98,47 +113,44 @@ export function EnquiryForm({
 
       <div className="text-left">
         <Label htmlFor="child_age" className="mb-1.5 block font-extrabold text-ink">
-          Child&apos;s age
+          {t("childAge")}
         </Label>
         <Select name="child_age" required>
           <SelectTrigger id="child_age" className="w-full">
-            <SelectValue placeholder="Select age" />
+            <SelectValue placeholder={t("selectAge")} />
           </SelectTrigger>
           <SelectContent>
-            {["2 years", "3 years", "4 years", "5 years", "6 years"].map(
-              (age) => (
-                <SelectItem key={age} value={age}>
-                  {age}
-                </SelectItem>
-              )
-            )}
+            {CHILD_AGES.map((age) => (
+              <SelectItem key={age} value={t("ageOption", { n: age })}>
+                {t("ageOption", { n: age })}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>
 
       <div className="text-left">
         <Label htmlFor="message" className="mb-1.5 block font-extrabold text-ink">
-          Message (optional)
+          {t("message")}
         </Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="Anything you'd like us to know, or a good time to call"
+          placeholder={t("messagePlaceholder")}
           className="min-h-24"
         />
       </div>
 
       <SubmitButton />
 
-      {state.status === "error" && (
+      {errorMessage && (
         <p className="text-center text-sm font-semibold text-red">
-          {state.message}
+          {errorMessage}
         </p>
       )}
 
       <p className="text-center text-[0.82rem] text-ink-soft">
-        Or call us directly at <strong>{site.phone}</strong> — we&apos;d love
-        to hear from you.
+        {t("callDirectlyPre")} <strong>{site.phone}</strong> {t("callDirectlyPost")}
       </p>
     </form>
   );

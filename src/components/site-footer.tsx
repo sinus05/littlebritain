@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { site } from "@/lib/site-config";
 
 export function SiteFooter() {
+  const t = useTranslations("Footer");
+  const siteT = useTranslations("Site");
+
   return (
     <footer className="bg-red-deep py-12 text-white/85">
       <div className="mx-auto max-w-6xl px-6">
@@ -22,20 +26,20 @@ export function SiteFooter() {
               <span className="block font-heading text-lg font-bold text-white">
                 Little Britain
               </span>
-              <span className="text-white/80">{site.tagline}</span>
+              <span className="text-white/80">{siteT("tagline")}</span>
             </div>
           </div>
           <div className="text-right font-bold text-white">
-            {site.hours}
+            {siteT("hours")}
             <small className="block text-[0.74rem] font-bold tracking-[0.12em] text-white/80 uppercase">
-              Open hours
+              {t("openHours")}
             </small>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-3 border-b border-white/15 py-6">
           <span className="text-[0.78rem] font-extrabold tracking-[0.1em] text-white/80 uppercase">
-            Also part of our family
+            {t("alsoPartOf")}
           </span>
           <a
             href={site.sisterBrand.href}
@@ -56,7 +60,7 @@ export function SiteFooter() {
 
         <div className="flex flex-wrap justify-between gap-2.5 pt-6 text-sm">
           <span>
-            © {new Date().getFullYear()} Little Britain Daycare · {site.address}
+            © {new Date().getFullYear()} Little Britain Daycare · {siteT("address")}
           </span>
           <span>
             {site.phone} ·{" "}

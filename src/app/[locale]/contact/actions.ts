@@ -38,14 +38,8 @@ export async function submitEnquiry(
     if (data.success) {
       return { status: "success" };
     }
-    return {
-      status: "error",
-      message: "Something went wrong. Please call us instead.",
-    };
+    return { status: "error", message: "generic" };
   } catch {
-    return {
-      status: "error",
-      message: "Network error. Please call us instead.",
-    };
+    return { status: "error", message: "network" };
   }
 }

@@ -1,5 +1,6 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { Container } from "@/components/section-heading";
@@ -13,6 +14,8 @@ export function CtaBanner({
   description: string;
   decorative?: boolean;
 }) {
+  const t = useTranslations("Header");
+
   return (
     <section className="relative overflow-hidden bg-red py-16 text-center text-white">
       {decorative && (
@@ -32,7 +35,7 @@ export function CtaBanner({
             nativeButton={false}
             className="h-auto rounded-full bg-white px-7 py-3.5 font-heading text-base font-semibold text-red shadow-md hover:bg-cream"
           >
-            Book a visit
+            {t("bookVisit")}
           </Button>
         </Reveal>
       </Container>

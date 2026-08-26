@@ -1,69 +1,88 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
 import { Container, SectionHeading } from "@/components/section-heading";
 import { PricingCard } from "@/components/pricing-card";
-import { pricingPlans, pricingHowItWorks } from "@/lib/site-config";
+import { pricingPlans } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata({
-  title: "Pricing & Plans",
-  description:
-    "Simple, transparent daycare pricing in Tashkent. Half day $270/month, full day $550/month — meals and daily activities included. Save with our 3-month enrollment plan.",
-  path: "/pricing",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Pricing.meta" });
+  return pageMetadata({
+    locale,
+    title: t("title"),
+    description: t("description"),
+    path: "/pricing",
+  });
+}
 
-export default function PricingPage() {
+export default async function PricingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Pricing");
+  const howItWorksItems = t.raw("howItWorks.items") as string[];
+
   return (
     <section className="py-16">
       <Container className="max-w-3xl">
         <SectionHeading
           as="h1"
-          kicker="Simple plans for busy families"
-          title="Clear pricing, no surprises"
+          kicker={t("kicker")}
+          title={t("title")}
         />
         <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-2">
           {pricingPlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard key={plan.slug} plan={plan} />
           ))}
         </div>
 
         <div className="mx-auto mt-14 max-w-2xl">
           <h2 className="text-center font-heading text-2xl font-bold text-ink">
-            Save with a 3-month enrollment plan
+            {t("discountTable.title")}
           </h2>
           <div className="mt-6 overflow-x-auto rounded-[28px] bg-white p-2 shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)]">
             <table className="w-full min-w-[480px] border-collapse text-left">
               <thead>
                 <tr className="border-b-2 border-cream-2">
                   <th className="p-4 font-heading text-sm font-bold text-ink">
-                    Plan
+                    {t("discountTable.plan")}
                   </th>
                   <th className="p-4 font-heading text-sm font-bold text-ink-soft">
-                    Standard Rate
+                    {t("discountTable.standardRate")}
                   </th>
                   <th className="p-4 font-heading text-sm font-bold text-red">
-                    3-Month Plan Rate
+                    {t("discountTable.threeMonthRate")}
                   </th>
                   <th className="p-4 font-heading text-sm font-bold text-sun-deep">
-                    You Save
+                    {t("discountTable.youSave")}
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {pricingPlans.map((plan) => (
-                  <tr key={plan.name} className="border-b border-cream-2 last:border-0">
+                  <tr key={plan.slug} className="border-b border-cream-2 last:border-0">
                     <td className="p-4 font-semibold text-ink">
-                      {plan.name}
+                      {t(`plans.${plan.key}.name`)}
                       <div className="text-xs font-normal text-ink-soft">
-                        {plan.hours}
+                        {t(`plans.${plan.key}.hours`)}
                       </div>
                     </td>
                     <td className="p-4 font-semibold text-ink-soft">
-                      ${plan.price}/month
+                      ${plan.price}{t("discountTable.perMonth")}
                     </td>
                     <td className="p-4 font-heading font-bold text-red">
-                      ${plan.discountPrice}/month
+                      ${plan.discountPrice}{t("discountTable.perMonth")}
                     </td>
                     <td className="p-4 font-semibold text-sun-deep">
-                      ${plan.savings}/month
+                      ${plan.savings}{t("discountTable.perMonth")}
                     </td>
                   </tr>
                 ))}
@@ -74,10 +93,10 @@ export default function PricingPage() {
 
         <div className="mx-auto mt-10 max-w-2xl rounded-[28px] bg-cream-2 p-8">
           <h2 className="font-heading text-2xl font-bold text-ink">
-            How it works
+            {t("howItWorks.title")}
           </h2>
           <ul className="mt-4 flex flex-col gap-3">
-            {pricingHowItWorks.map((line) => (
+            {howItWorksItems.map((line) => (
               <li
                 key={line}
                 className="flex gap-2.5 font-semibold text-ink-soft"

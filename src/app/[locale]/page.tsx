@@ -1,7 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealItem } from "@/components/reveal";
 import { Container, SectionHeading } from "@/components/section-heading";
@@ -9,9 +10,20 @@ import { ActivitiesGrid } from "@/components/activities-grid";
 import { WhyUsGrid } from "@/components/why-us-grid";
 import { DayScheduleGrid } from "@/components/day-schedule-grid";
 import { CtaBanner } from "@/components/cta-banner";
-import { galleryPhotos, pricingPlans, trustBadges } from "@/lib/site-config";
+import { galleryPhotos, pricingPlans } from "@/lib/site-config";
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Home");
+  const tRoot = await getTranslations();
+  const tPhotos = await getTranslations("GalleryPhotos");
+  const trustBadges = tRoot.raw("TrustBadges") as string[];
+
   return (
     <>
       {/* Hero */}
@@ -38,17 +50,16 @@ export default function HomePage() {
           </div>
 
           <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-sun-soft px-4 py-1.5 text-sm font-extrabold text-sun-deep">
-            <span className="size-1.5 rounded-full bg-sun" /> British English ·
-            Ages 2 to 6
+            <span className="size-1.5 rounded-full bg-sun" /> {t("hero.eyebrow")}
           </span>
 
           <h1 className="mb-4 text-[clamp(2.4rem,5.4vw,3.7rem)] text-ink">
-            Where <span className="text-red">playtime</span> meets education
+            {t("hero.titlePre")} <span className="text-red">{t("hero.titleHighlight")}</span>{" "}
+            {t("hero.titlePost")}
           </h1>
 
           <p className="mx-auto mb-6 max-w-[30em] text-[1.16rem] text-ink-soft">
-            A warm, English-medium daycare in Tashkent where your little one
-            learns, plays, and makes friends every day.
+            {t("hero.description")}
           </p>
 
           <div className="mb-6 flex flex-wrap justify-center gap-3.5">
@@ -57,7 +68,7 @@ export default function HomePage() {
               nativeButton={false}
               className="h-auto rounded-full bg-red px-6 py-3.5 font-heading text-base font-semibold text-white shadow-md hover:bg-red-deep"
             >
-              Book a visit <ArrowRight className="size-4.5" />
+              {t("hero.bookVisit")} <ArrowRight className="size-4.5" />
             </Button>
             <Button
               render={<Link href="/programs" />}
@@ -65,7 +76,7 @@ export default function HomePage() {
               variant="outline"
               className="h-auto rounded-full border-2 border-red bg-transparent px-6 py-3.5 font-heading text-base font-semibold text-red hover:bg-red-soft"
             >
-              See our day
+              {t("hero.seeOurDay")}
             </Button>
           </div>
 
@@ -86,9 +97,9 @@ export default function HomePage() {
       <section className="bg-white py-16">
         <Container>
           <SectionHeading
-            kicker="A joyful day, every day"
-            title="So much more than childcare"
-            description="From paintbrushes to chessboards, every part of the day is designed to spark curiosity, build confidence, and grow young minds."
+            kicker={t("activitiesTeaser.kicker")}
+            title={t("activitiesTeaser.title")}
+            description={t("activitiesTeaser.description")}
           />
           <ActivitiesGrid />
           <div className="mt-10 text-center">
@@ -96,7 +107,7 @@ export default function HomePage() {
               href="/programs"
               className="font-heading font-semibold text-red hover:underline"
             >
-              Explore all programs &amp; our daily schedule →
+              {t("activitiesTeaser.link")}
             </Link>
           </div>
         </Container>
@@ -106,8 +117,8 @@ export default function HomePage() {
       <section className="py-16">
         <Container>
           <SectionHeading
-            kicker="Why families choose us"
-            title="Care you can feel good about"
+            kicker={t("whyUs.kicker")}
+            title={t("whyUs.title")}
           />
           <WhyUsGrid />
         </Container>
@@ -117,9 +128,9 @@ export default function HomePage() {
       <section className="bg-cream-2 py-16">
         <Container>
           <SectionHeading
-            kicker="A day at Little Britain"
-            title="A gentle rhythm, full of fun"
-            description="Our days flow between learning, play, rest, and good food — so every child feels settled and happy."
+            kicker={t("dayTeaser.kicker")}
+            title={t("dayTeaser.title")}
+            description={t("dayTeaser.description")}
           />
           <DayScheduleGrid limit={4} />
           <div className="mt-8 text-center">
@@ -127,7 +138,7 @@ export default function HomePage() {
               href="/programs"
               className="font-heading font-semibold text-red hover:underline"
             >
-              See the full daily schedule →
+              {t("dayTeaser.link")}
             </Link>
           </div>
         </Container>
@@ -137,16 +148,18 @@ export default function HomePage() {
       <section className="py-14">
         <Container className="max-w-3xl text-center">
           <SectionHeading
-            kicker="Simple plans for busy families"
-            title="Clear pricing, no surprises"
-            description={`Plans start at $${pricingPlans[0].price}/month, with meals and all daily activities included.`}
+            kicker={t("pricingTeaser.kicker")}
+            title={t("pricingTeaser.title")}
+            description={t("pricingTeaser.description", {
+              price: pricingPlans[0].price,
+            })}
           />
           <Button
             render={<Link href="/pricing" />}
             nativeButton={false}
             className="h-auto rounded-full bg-red px-6 py-3.5 font-heading text-base font-semibold text-white hover:bg-red-deep"
           >
-            View plans &amp; pricing
+            {t("pricingTeaser.cta")}
           </Button>
         </Container>
       </section>
@@ -154,7 +167,10 @@ export default function HomePage() {
       {/* Gallery teaser */}
       <section className="bg-white py-14">
         <Container>
-          <SectionHeading kicker="A peek inside" title="Come and see us in action" />
+          <SectionHeading
+            kicker={t("galleryTeaser.kicker")}
+            title={t("galleryTeaser.title")}
+          />
           <Reveal
             stagger
             className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2"
@@ -167,14 +183,14 @@ export default function HomePage() {
                 <Link href="/gallery" className="block">
                   <Image
                     src={photo.src}
-                    alt={photo.alt}
+                    alt={tPhotos(`${photo.id}.alt`)}
                     width={600}
                     height={450}
                     sizes="(max-width: 640px) 100vw, 600px"
                     className="h-[230px] w-full object-cover"
                   />
                   <span className="block p-4 font-heading font-bold text-ink">
-                    {photo.caption}
+                    {tPhotos(`${photo.id}.caption`)}
                   </span>
                 </Link>
               </RevealItem>
@@ -184,8 +200,8 @@ export default function HomePage() {
       </section>
 
       <CtaBanner
-        title="Ready to visit?"
-        description="The best way to feel the Little Britain difference is to visit. Pop in for a tour — we'd love to meet you and your little one."
+        title={t("cta.title")}
+        description={t("cta.description")}
         decorative
       />
     </>

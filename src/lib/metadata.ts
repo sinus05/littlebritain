@@ -1,23 +1,35 @@
 import type { Metadata } from "next";
 
 import { site } from "@/lib/site-config";
+import { routing } from "@/i18n/routing";
 
 export function pageMetadata({
+  locale,
   title,
   description,
   path,
 }: {
+  locale: string;
   title: string;
   description: string;
   path: string;
 }): Metadata {
-  const url = `${site.url}${path}`;
+  const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const canonical = `${localePrefix}${path}`;
+  const url = `${site.url}${canonical}`;
   const socialTitle = `${title} | ${site.name}`;
 
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical,
+      languages: {
+        en: path,
+        ru: `/ru${path}`,
+        "x-default": path,
+      },
+    },
     openGraph: {
       title: socialTitle,
       description,

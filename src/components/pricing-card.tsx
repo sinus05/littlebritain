@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import type { pricingPlans } from "@/lib/site-config";
@@ -9,6 +10,10 @@ import { cn } from "@/lib/utils";
 type Plan = (typeof pricingPlans)[number];
 
 export function PricingCard({ plan }: { plan: Plan }) {
+  const t = useTranslations("Pricing");
+  const name = t(`plans.${plan.key}.name`);
+  const includes = t.raw(`plans.${plan.key}.includes`) as string[];
+
   return (
     <Reveal>
       <div
@@ -19,24 +24,22 @@ export function PricingCard({ plan }: { plan: Plan }) {
       >
         {plan.featured && (
           <span className="absolute -top-[15px] left-1/2 -translate-x-1/2 rounded-full bg-red px-5 py-1.5 font-heading text-[0.85rem] font-bold whitespace-nowrap text-white shadow-md">
-            ★ Most loved by families
+            {t("mostLoved")}
           </span>
         )}
-        <div className="font-heading text-2xl font-bold text-ink">
-          {plan.name}
-        </div>
+        <div className="font-heading text-2xl font-bold text-ink">{name}</div>
         <div className="mb-4.5 text-[0.9rem] font-bold text-ink-soft">
-          {plan.hours}
+          {t(`plans.${plan.key}.hours`)}
         </div>
         <div className="font-heading text-5xl font-extrabold text-red">
           ${plan.price}
           <small className="font-sans text-base font-bold text-ink-soft">
             {" "}
-            / month
+            {t("perMonth")}
           </small>
         </div>
         <ul className="my-5.5 flex list-none flex-col gap-1.5">
-          {plan.includes.map((line) => (
+          {includes.map((line) => (
             <li
               key={line}
               className="flex items-center gap-2.5 py-1.5 font-semibold text-ink"
@@ -57,7 +60,7 @@ export function PricingCard({ plan }: { plan: Plan }) {
           )}
           variant={plan.featured ? "default" : "outline"}
         >
-          Choose {plan.name.toLowerCase()}
+          {t("chooseButton", { name })}
         </Button>
       </div>
     </Reveal>

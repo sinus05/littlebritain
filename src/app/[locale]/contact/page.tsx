@@ -1,4 +1,5 @@
 import { MapPin, Phone } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Reveal } from "@/components/reveal";
@@ -6,12 +7,20 @@ import { Container, SectionHeading } from "@/components/section-heading";
 import { pricingPlans, site } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata({
-  title: "Contact & Book a Visit",
-  description:
-    "Book a visit to Little Britain Daycare in Tashkent. Call, message us on Telegram, or fill in the enquiry form and we'll call you back.",
-  path: "/contact",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Contact.meta" });
+  return pageMetadata({
+    locale,
+    title: t("title"),
+    description: t("description"),
+    path: "/contact",
+  });
+}
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -31,36 +40,49 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
-const contactLinks = [
-  {
-    href: site.phoneHref,
-    icon: Phone,
-    label: "Call us",
-    value: site.phone,
-  },
-  {
-    href: `https://maps.google.com/?q=${site.addressMapQuery}`,
-    icon: MapPin,
-    label: "Visit us",
-    value: site.address,
-    external: true,
-  },
-  {
-    href: site.instagramHref,
-    icon: InstagramIcon,
-    label: "Follow us",
-    value: site.instagram,
-    external: true,
-  },
-];
-
 export default async function ContactPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{ program?: string }>;
 }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const { program } = await searchParams;
   const selectedPlan = pricingPlans.find((plan) => plan.slug === program);
+
+  const t = await getTranslations("Contact");
+  const tPricing = await getTranslations("Pricing");
+  const tSite = await getTranslations("Site");
+
+  const address = tSite("address");
+  const initialProgramName = selectedPlan
+    ? tPricing(`plans.${selectedPlan.key}.name`)
+    : undefined;
+
+  const contactLinks = [
+    {
+      href: site.phoneHref,
+      icon: Phone,
+      label: t("links.call"),
+      value: site.phone,
+    },
+    {
+      href: `https://maps.google.com/?q=${site.addressMapQuery}`,
+      icon: MapPin,
+      label: t("links.visit"),
+      value: address,
+      external: true,
+    },
+    {
+      href: site.instagramHref,
+      icon: InstagramIcon,
+      label: t("links.follow"),
+      value: site.instagram,
+      external: true,
+    },
+  ];
 
   return (
     <section className="py-12">
@@ -68,13 +90,13 @@ export default async function ContactPage({
         <SectionHeading
           as="h1"
           className="mb-8"
-          kicker="Book a visit"
-          title="Let's find the perfect spot for your child"
-          description="Book a free tour — we'll usually call you back the same day."
+          kicker={t("kicker")}
+          title={t("title")}
+          description={t("description")}
         />
 
         <Reveal className="mx-auto mb-14 max-w-xl rounded-[28px] border border-line bg-white p-9 shadow-[0_8px_22px_-12px_rgba(61,43,38,0.3)]">
-          <EnquiryForm initialProgram={selectedPlan?.name} />
+          <EnquiryForm initialProgram={initialProgramName} />
         </Reveal>
 
         <div className="grid gap-10 lg:grid-cols-2">
@@ -105,8 +127,8 @@ export default async function ContactPage({
           <Reveal>
             <div className="overflow-hidden rounded-3xl border-[6px] border-white bg-white shadow-[0_30px_60px_-24px_rgba(61,43,38,0.34)]">
               <iframe
-                title="Little Britain Daycare location"
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(site.address)}&z=16&output=embed`}
+                title={t("mapTitle")}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(site.addressMapQuery.replace(/\+/g, " "))}&z=16&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="block h-[340px] w-full border-0"
