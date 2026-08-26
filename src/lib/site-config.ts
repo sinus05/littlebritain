@@ -108,6 +108,8 @@ export const pricingPlans = [
     slug: "half-day",
     hours: "8:00 AM – 1:00 PM",
     price: 270,
+    discountPrice: 200,
+    savings: 70,
     featured: false,
     includes: ["Breakfast", "Morning snack", "Lunch", "All daily activities"],
   },
@@ -116,6 +118,8 @@ export const pricingPlans = [
     slug: "full-day",
     hours: "8:00 AM – 6:00 PM",
     price: 550,
+    discountPrice: 450,
+    savings: 100,
     featured: true,
     includes: [
       "Breakfast & morning snack",
@@ -124,6 +128,12 @@ export const pricingPlans = [
       "All daily activities",
     ],
   },
+] as const;
+
+export const pricingHowItWorks = [
+  "The discounted rate applies when your family commits to a full 3-month enrollment cycle — not month-to-month.",
+  "To keep your discounted rate, simply renew consecutively at the end of each 3-month cycle.",
+  "If you don't renew within the cycle, the rate resets to standard the next time you enroll.",
 ] as const;
 
 export const faqs = [
@@ -140,7 +150,7 @@ export const faqs = [
   {
     question: "How much does daycare cost?",
     answer:
-      "Half day (8:00 AM – 1:00 PM) is $270/month and full day (8:00 AM – 6:00 PM) is $550/month. Both plans include meals and all daily activities.",
+      "Half day (8:00 AM – 1:00 PM) is $270/month and full day (8:00 AM – 6:00 PM) is $550/month at the standard rate. Commit to a 3-month enrollment cycle and pay $200/month for half day or $450/month for full day. Both plans include meals and all daily activities.",
   },
   {
     question: "Are meals included?",
