@@ -139,7 +139,7 @@ export default function HomePage() {
           <SectionHeading
             kicker="Simple plans for busy families"
             title="Clear pricing, no surprises"
-            description={`Plans start at $${pricingPlans[0].discountPrice}/month with our 3-month enrollment plan, meals and all daily activities included.`}
+            description={`Plans start at $${pricingPlans[0].price}/month, with meals and all daily activities included.`}
           />
           <Button
             render={<Link href="/pricing" />}
