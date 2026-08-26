@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Menu, Phone } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
@@ -22,6 +22,8 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const t = useTranslations("Header");
   const tNav = useTranslations("Nav");
+  const locale = useLocale();
+  const isRu = locale === "ru";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -43,40 +45,53 @@ export function SiteHeader() {
           aria-label={t("homeAriaLabel")}
           className="flex flex-col leading-none"
         >
-          <span className="font-heading text-lg font-bold text-ink">
+          <span className="font-heading text-lg font-bold whitespace-nowrap text-ink">
             {t("brandName")}
           </span>
-          <span className="text-[0.64rem] font-extrabold tracking-[0.18em] text-ink-soft uppercase">
+          <span className="text-[0.64rem] font-extrabold tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase">
             {t("brandSub")}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className={cn("hidden items-center lg:flex", isRu ? "gap-3" : "gap-6")}>
           {navLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-bold text-ink transition-colors hover:text-red"
+              className="text-sm font-bold whitespace-nowrap text-ink transition-colors hover:text-red"
             >
               {tNav(item.key)}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className={cn("hidden items-center lg:flex", isRu ? "gap-2" : "gap-5")}>
           <LanguageSwitcher ariaLabel={t("languageAria")} />
-          <div className="text-right leading-tight">
-            <span className="block text-[0.62rem] font-extrabold tracking-[0.14em] text-ink-soft uppercase">
-              {t("callUsToday")}
-            </span>
-            <span className="font-extrabold text-ink">{site.phone}</span>
-          </div>
+          {!isRu && (
+            <div className="text-right leading-tight">
+              <span className="block text-[0.62rem] font-extrabold tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase">
+                {t("callUsToday")}
+              </span>
+              <span className="whitespace-nowrap font-extrabold text-ink">{site.phone}</span>
+            </div>
+          )}
+          {isRu && (
+            <a
+              href={site.phoneHref}
+              className="whitespace-nowrap font-extrabold text-ink"
+            >
+              {site.phone}
+            </a>
+          )}
           <Button
             render={<Link href="/contact" />}
             nativeButton={false}
-            className="h-auto rounded-full bg-red px-6 py-3 font-heading text-base font-semibold text-white shadow-md hover:bg-red-deep"
+            className={cn(
+              "h-auto rounded-full bg-red py-3 font-heading text-base font-semibold whitespace-nowrap text-white shadow-md hover:bg-red-deep",
+              isRu ? "px-5" : "px-6"
+            )}
           >
-            {t("bookVisit")}
+            {t("bookVisitShort")}
           </Button>
         </div>
 
