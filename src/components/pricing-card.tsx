@@ -29,11 +29,22 @@ export function PricingCard({ plan }: { plan: Plan }) {
           {plan.hours}
         </div>
         <div className="font-heading text-5xl font-extrabold text-red">
-          ${plan.price}
+          ${plan.discountPrice}
           <small className="font-sans text-base font-bold text-ink-soft">
             {" "}
             / month
           </small>
+        </div>
+        <div className="mt-1.5 flex flex-wrap items-center gap-2">
+          <span className="text-sm font-semibold text-ink-soft line-through">
+            ${plan.price}/month standard
+          </span>
+          <span className="rounded-full bg-sun-soft px-2.5 py-0.5 text-xs font-bold text-sun-deep">
+            Save ${plan.savings}/mo
+          </span>
+        </div>
+        <div className="mt-1 text-xs font-semibold text-ink-soft">
+          with a 3-month enrollment plan
         </div>
         <ul className="my-5.5 flex list-none flex-col gap-1.5">
           {plan.includes.map((line) => (
