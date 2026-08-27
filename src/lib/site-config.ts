@@ -172,8 +172,14 @@ export const faqs = [
 export const galleryPhotos = [
   { src: "/reading-corner.jpg", alt: "Reading corner with children's books and bean bags at Little Britain Daycare", caption: "Reading corner", width: 1200, height: 901 },
   { src: "/play-lounge.jpg", alt: "Cosy lounge with bean bag seating and TV for movie afternoons at Little Britain Daycare", caption: "Cinema & play lounge", width: 1200, height: 901 },
-  { src: "/facil1.jpg", alt: "Little Britain Daycare facility", caption: "Our facility", width: 1600, height: 1200 },
-  { src: "/facil4.jpg", alt: "Little Britain Daycare facility", caption: "Our facility", width: 1600, height: 1200 },
-  { src: "/facil5.jpg", alt: "Little Britain Daycare facility", caption: "Our facility", width: 1600, height: 1200 },
-  { src: "/facil6.jpg", alt: "Little Britain Daycare facility", caption: "Our facility", width: 1600, height: 1200 },
+  { src: "/pottery-painting.png", alt: "Children painting handmade clay pots at Little Britain Daycare", caption: "Pottery painting", width: 1928, height: 2560 },
+  { src: "/taekwondo-practice.png", alt: "Children practicing taekwondo in uniform at Little Britain Daycare", caption: "Taekwondo practice", width: 1920, height: 2560 },
+  { src: "/pasta-lion-craft.png", alt: "Children gluing pasta to make a lion craft at Little Britain Daycare", caption: "Pasta lion craft", width: 1928, height: 2560 },
+  { src: "/beading-with-teacher.png", alt: "A teacher helping a child with a beading activity at Little Britain Daycare", caption: "Beading with our teachers", width: 1920, height: 2560 },
+  { src: "/rainbow-craft.png", alt: "A boy proudly holding up his rainbow craft at Little Britain Daycare", caption: "Rainbow craft", width: 1928, height: 2560 },
+  { src: "/dress-up-day.png", alt: "Children in costumes on dress-up day at Little Britain Daycare", caption: "Dress-up day", width: 2560, height: 1920 },
+  { src: "/teacher-helping-girl.png", alt: "A teacher helping a girl with a craft activity at Little Britain Daycare", caption: "One-on-one support", width: 960, height: 1280 },
+  { src: "/beading-boys.png", alt: "Two boys threading beads onto string at Little Britain Daycare", caption: "Beading & jewellery making", width: 1920, height: 2560 },
+  { src: "/art-craft-friends.png", alt: "A girl and boy painting a craft template together at Little Britain Daycare", caption: "Creative play", width: 1920, height: 2560 },
+  { src: "/art-craft-boys.png", alt: "Two boys painting craft templates at a table at Little Britain Daycare", caption: "Craft time", width: 1920, height: 2560 },
 ] as const;
