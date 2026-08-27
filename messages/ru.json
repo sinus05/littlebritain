@@ -142,21 +142,45 @@
       "alt": "Уютная гостиная с креслами-мешками и телевизором для кинопросмотров в Little Britain Daycare",
       "caption": "Кинозал и игровая гостиная"
     },
-    "facil1": {
-      "alt": "Помещение Little Britain Daycare",
-      "caption": "Наши помещения"
+    "potteryPainting": {
+      "alt": "Дети расписывают глиняные горшочки в Little Britain Daycare",
+      "caption": "Роспись керамики"
     },
-    "facil4": {
-      "alt": "Помещение Little Britain Daycare",
-      "caption": "Наши помещения"
+    "taekwondoPractice": {
+      "alt": "Дети занимаются тхэквондо в форме в Little Britain Daycare",
+      "caption": "Занятие тхэквондо"
     },
-    "facil5": {
-      "alt": "Помещение Little Britain Daycare",
-      "caption": "Наши помещения"
+    "pastaLionCraft": {
+      "alt": "Дети приклеивают макароны, создавая поделку-льва в Little Britain Daycare",
+      "caption": "Поделка-лев из макарон"
     },
-    "facil6": {
-      "alt": "Помещение Little Britain Daycare",
-      "caption": "Наши помещения"
+    "beadingWithTeacher": {
+      "alt": "Педагог помогает ребёнку с бисероплетением в Little Britain Daycare",
+      "caption": "Бисероплетение с педагогом"
+    },
+    "rainbowCraft": {
+      "alt": "Мальчик с гордостью показывает свою поделку-радугу в Little Britain Daycare",
+      "caption": "Поделка-радуга"
+    },
+    "dressUpDay": {
+      "alt": "Дети в костюмах в день переодевания в Little Britain Daycare",
+      "caption": "День костюмов"
+    },
+    "teacherHelpingGirl": {
+      "alt": "Педагог помогает девочке с творческим занятием в Little Britain Daycare",
+      "caption": "Индивидуальная поддержка"
+    },
+    "beadingBoys": {
+      "alt": "Два мальчика нанизывают бусины на нить в Little Britain Daycare",
+      "caption": "Бисероплетение и украшения"
+    },
+    "artCraftFriends": {
+      "alt": "Девочка и мальчик вместе раскрашивают поделку в Little Britain Daycare",
+      "caption": "Творчество вместе"
+    },
+    "artCraftBoys": {
+      "alt": "Два мальчика раскрашивают поделки за столом в Little Britain Daycare",
+      "caption": "Время творчества"
     }
   },
   "Faq": {

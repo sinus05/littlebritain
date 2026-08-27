@@ -142,21 +142,45 @@
       "alt": "Cosy lounge with bean bag seating and TV for movie afternoons at Little Britain Daycare",
       "caption": "Cinema & play lounge"
     },
-    "facil1": {
-      "alt": "Little Britain Daycare facility",
-      "caption": "Our facility"
+    "potteryPainting": {
+      "alt": "Children painting handmade clay pots at Little Britain Daycare",
+      "caption": "Pottery painting"
     },
-    "facil4": {
-      "alt": "Little Britain Daycare facility",
-      "caption": "Our facility"
+    "taekwondoPractice": {
+      "alt": "Children practicing taekwondo in uniform at Little Britain Daycare",
+      "caption": "Taekwondo practice"
     },
-    "facil5": {
-      "alt": "Little Britain Daycare facility",
-      "caption": "Our facility"
+    "pastaLionCraft": {
+      "alt": "Children gluing pasta to make a lion craft at Little Britain Daycare",
+      "caption": "Pasta lion craft"
     },
-    "facil6": {
-      "alt": "Little Britain Daycare facility",
-      "caption": "Our facility"
+    "beadingWithTeacher": {
+      "alt": "A teacher helping a child with a beading activity at Little Britain Daycare",
+      "caption": "Beading with our teachers"
+    },
+    "rainbowCraft": {
+      "alt": "A boy proudly holding up his rainbow craft at Little Britain Daycare",
+      "caption": "Rainbow craft"
+    },
+    "dressUpDay": {
+      "alt": "Children in costumes on dress-up day at Little Britain Daycare",
+      "caption": "Dress-up day"
+    },
+    "teacherHelpingGirl": {
+      "alt": "A teacher helping a girl with a craft activity at Little Britain Daycare",
+      "caption": "One-on-one support"
+    },
+    "beadingBoys": {
+      "alt": "Two boys threading beads onto string at Little Britain Daycare",
+      "caption": "Beading & jewellery making"
+    },
+    "artCraftFriends": {
+      "alt": "A girl and boy painting a craft template together at Little Britain Daycare",
+      "caption": "Creative play"
+    },
+    "artCraftBoys": {
+      "alt": "Two boys painting craft templates at a table at Little Britain Daycare",
+      "caption": "Craft time"
     }
   },
   "Faq": {

@@ -79,8 +79,14 @@ export const faqIds = [
 export const galleryPhotos = [
   { id: "readingCorner", src: "/reading-corner.jpg", width: 1200, height: 901 },
   { id: "playLounge", src: "/play-lounge.jpg", width: 1200, height: 901 },
-  { id: "facil1", src: "/facil1.jpg", width: 1600, height: 1200 },
-  { id: "facil4", src: "/facil4.jpg", width: 1600, height: 1200 },
-  { id: "facil5", src: "/facil5.jpg", width: 1600, height: 1200 },
-  { id: "facil6", src: "/facil6.jpg", width: 1600, height: 1200 },
+  { id: "potteryPainting", src: "/pottery-painting.png", width: 1928, height: 2560 },
+  { id: "taekwondoPractice", src: "/taekwondo-practice.png", width: 1920, height: 2560 },
+  { id: "pastaLionCraft", src: "/pasta-lion-craft.png", width: 1928, height: 2560 },
+  { id: "beadingWithTeacher", src: "/beading-with-teacher.png", width: 1920, height: 2560 },
+  { id: "rainbowCraft", src: "/rainbow-craft.png", width: 1928, height: 2560 },
+  { id: "dressUpDay", src: "/dress-up-day.png", width: 2560, height: 1920 },
+  { id: "teacherHelpingGirl", src: "/teacher-helping-girl.png", width: 960, height: 1280 },
+  { id: "beadingBoys", src: "/beading-boys.png", width: 1920, height: 2560 },
+  { id: "artCraftFriends", src: "/art-craft-friends.png", width: 1920, height: 2560 },
+  { id: "artCraftBoys", src: "/art-craft-boys.png", width: 1920, height: 2560 },
 ] as const;
