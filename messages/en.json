@@ -1,9 +1,9 @@
 {
   "Meta": {
     "titleDefault": "Little Britain Daycare — Where Playtime Meets Education | Tashkent",
-    "description": "A warm, English-medium daycare in Tashkent for children aged 2–6. Montessori play-based learning, native English teachers, and freshly cooked meals.",
+    "description": "A warm, English-medium daycare in Tashkent for children aged 5–7. Montessori play-based learning, native English teachers, and freshly cooked meals.",
     "ogTitle": "Little Britain Daycare — Tashkent",
-    "ogDescription": "English-medium daycare for ages 2–6. Native teachers, Montessori play, hot meals. Book a visit.",
+    "ogDescription": "English-medium daycare for ages 5–7. Native teachers, Montessori play, hot meals. Book a visit.",
     "skipToContent": "Skip to content"
   },
   "Site": {
@@ -37,7 +37,7 @@
   },
   "Home": {
     "hero": {
-      "eyebrow": "British English · Ages 2 to 6",
+      "eyebrow": "British English · Ages 5 to 7",
       "titlePre": "Where",
       "titleHighlight": "playtime",
       "titlePost": "meets education",
@@ -84,7 +84,7 @@
     "story": {
       "eyebrow": "Our story",
       "title": "A little home away from home",
-      "p1": "Little Britain gives Tashkent families an English-medium, play-based alternative to traditional childcare — where children aged 2 to 6 learn, laugh, and grow with native English speakers every day.",
+      "p1": "Little Britain gives Tashkent families an English-medium, play-based alternative to traditional childcare — where children aged 5 to 7 learn, laugh, and grow with native English speakers every day.",
       "p2Pre": "We're part of the",
       "p2Post": "family, bringing years of English-language education experience into a warm daycare setting."
     },
@@ -106,7 +106,7 @@
   "Programs": {
     "meta": {
       "title": "Programs & Daily Schedule",
-      "description": "Explore Little Britain Daycare's daily activities — art, movement, stories, and more — plus our full day-by-day schedule for ages 2–6."
+      "description": "Explore Little Britain Daycare's daily activities — art, movement, stories, and more — plus our full day-by-day schedule for ages 5–7."
     },
     "hero": {
       "kicker": "A joyful day, every day",
@@ -193,7 +193,7 @@
     "items": {
       "ages": {
         "question": "What ages does Little Britain Daycare accept?",
-        "answer": "We welcome children aged 2 to 6 years old, in both our half-day and full-day programmes."
+        "answer": "We welcome children aged 5 to 7 years old, in both our half-day and full-day programmes."
       },
       "language": {
         "question": "What language do you teach in?",

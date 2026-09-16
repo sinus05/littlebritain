@@ -20,7 +20,7 @@ import { pricingPlans, site } from "@/lib/site-config";
 import { submitEnquiry, type EnquiryState } from "@/app/[locale]/contact/actions";
 
 const initialState: EnquiryState = { status: "idle" };
-const CHILD_AGES = [2, 3, 4, 5, 6];
+const CHILD_AGES = [5, 6, 7];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
